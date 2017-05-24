@@ -33,7 +33,7 @@ var arraySum = function(array) {
   let total = 0;
   array.forEach((element) => {
     if (Array.isArray(element)) {
-      total += sum(element);
+      total += arraySum(element);
     } else {
       total += element;
     }
@@ -101,13 +101,12 @@ var range = function(x, y) {
 // range2(1, 2); [1]
 // range2(1, 3); 
 // range2(1, 4);
-var range2 = (x, y) => {
-  if (x === y) {
-    return [];
-  }
-
-  return [x].concat(range2(x + 1, y));
-}
+// var range2 = (x, y) => {
+//   if (x === y) {
+//     return [];
+//   }
+//   return [x].concat(range2(x + 1, y));
+// }
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
