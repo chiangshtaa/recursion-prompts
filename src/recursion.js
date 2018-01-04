@@ -6,38 +6,40 @@
 // denoted by n!, is the product of all positive integers less than or equal to n.
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
+
 var factorial = function(n) {
   if (n < 0) {
     return null;
   } else if (n <= 1) {
     return 1;
   }
-  return n * factorial(n-1);
-};
+  return n * factorial(n - 1);
+}
 
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
+
 var sum = function(array) {
   if (array.length === 0) {
     return 0;
   }
-  var total = sum(array.slice(0, array.length - 1));
+  let total = sum(array.slice(0, array.length - 1));
   total += array[array.length - 1];
   return total;
-};
+}
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 // arraySum([[1],[[2]],3,4]); // 10
 var arraySum = function(array) {
   let total = 0;
-  array.forEach((element) => {
-    if (Array.isArray(element)) {
-      total += arraySum(element);
+  for (let i = 0; i < array.length; i++) {
+    if (Array.isArray(array[i])) {
+      total += arraySum(array[i]);
     } else {
-      total += element;
+      total += array[i];
     }
-  });
+  }
   return total;
 };
 
@@ -49,23 +51,20 @@ var isEven = function(n) {
   } else if (n === 1) {
     return false;
   }
-  return isEven(n-2);
+  return isEven(n - 2);
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
-  if (n >= 0) {
-    if (n === 0) {
-      return 0;
-    }
-    return n-1 + sumBelow(n-1);
-  } else if (n <= 0) {
-    if (n === 0) {
-      return 0;
-    }
-    return n+1 + sumBelow(n+1);
+  if (n === 0) {
+    return 0;
+  }
+  if (n < 0) {
+    return n + 1 + sumBelow(n + 1);
+  } else {
+    return n - 1 + sumBelow(n - 1);
   }
 };
 
@@ -114,6 +113,7 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+
 };
 
 // 8. Determine if a number is a power of two.
