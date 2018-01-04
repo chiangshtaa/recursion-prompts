@@ -76,36 +76,21 @@ var sumBelow = function(n) {
 // range(3, 1); // [2]
 // range(4, 1); // [2, 3]
 var range = function(x, y) {
-  if (x > y) {
-    if (x === (y + 1)) {
+  if (x === y) {
+    return [];
+  }
+  if (x < y) {
+    if (x === y - 1) {
       return [];
     }
-    let result = range(x, y+1); //[2]
-    result.push(y+1); //[2]
-    return result;
-  } else {
-    if (x === y) {
+    return [x + 1].concat(range(x + 1, y));
+  } else if (x > y) {
+    if (x === y + 1) {
       return [];
     }
-    if (x === (y - 1)) {
-      return [];
-    }
-    let result = range(x, y-1);
-    result.push(y-1);
-    return result;
+    return [x - 1].concat(range(x - 1, y));
   }
 };
-
-
-// range2(1, 2); [1]
-// range2(1, 3); 
-// range2(1, 4);
-// var range2 = (x, y) => {
-//   if (x === y) {
-//     return [];
-//   }
-//   return [x].concat(range2(x + 1, y));
-// }
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
